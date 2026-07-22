@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golf Flight Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="control-panel">
+      <h1>Golf Flight Simulator</h1>
+      
+      <div class="panel-section">
+        <h2>Launch Parameters</h2>
+        <div class="input-group">
+          <label for="verticalAngle">Vertical Launch Angle (°)</label>
+          <input type="number" id="verticalAngle" value="25" min="0" max="90" step="0.1">
+        </div>
+        <div class="input-group">
+          <label for="horizontalAngle">Horizontal Launch Angle (°)</label>
+          <input type="number" id="horizontalAngle" value="0" min="-45" max="45" step="0.1">
+        </div>
+        <div class="input-group">
+          <label for="launchVelocity">Launch Velocity (mph)</label>
+          <input type="number" id="launchVelocity" value="120" min="0" max="200" step="0.1">
+        </div>
+        <div class="input-group">
+          <label for="backspin">Backspin (rpm)</label>
+          <input type="number" id="backspin" value="2500" min="0" max="10000" step="100">
+        </div>
+        <div class="input-group">
+          <label for="spinAxis">Spin Axis (°)</label>
+          <input type="number" id="spinAxis" value="0" min="-90" max="90" step="0.1">
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h2>Environmental Factors</h2>
+        <div class="input-group">
+          <label for="windSpeed">Wind Speed (mph)</label>
+          <input type="number" id="windSpeed" value="0" min="-50" max="50" step="0.1">
+        </div>
+        <div class="input-group">
+          <label for="windDirection">Wind Direction (°)</label>
+          <input type="number" id="windDirection" value="0" min="0" max="360" step="1">
+        </div>
+        <div class="input-group">
+          <label for="temperature">Temperature (°F)</label>
+          <input type="number" id="temperature" value="72" min="-50" max="120" step="0.1">
+        </div>
+        <div class="input-group">
+          <label for="humidity">Humidity (%)</label>
+          <input type="number" id="humidity" value="50" min="0" max="100" step="1">
+        </div>
+        <div class="input-group">
+          <label for="airPressure">Air Pressure (inHg)</label>
+          <input type="number" id="airPressure" value="29.92" min="28" max="31" step="0.01">
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h2>Simulation Controls</h2>
+        <div class="button-group">
+          <button id="simulateBtn" class="btn btn-primary">Simulate & Animate</button>
+          <button id="simulateNoAnimBtn" class="btn btn-secondary">Simulate Only</button>
+          <button id="resetBtn" class="btn btn-tertiary">Reset</button>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h2>Results</h2>
+        <div id="resultsContainer" class="results-grid">
+          <div class="result-item">
+            <span class="result-label">Carry Distance:</span>
+            <span class="result-value" id="carryDistance">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Total Distance:</span>
+            <span class="result-value" id="totalDistance">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Hang Time:</span>
+            <span class="result-value" id="hangTime">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Max Height:</span>
+            <span class="result-value" id="maxHeight">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Off Center:</span>
+            <span class="result-value" id="offCenter">-</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Landing Angle:</span>
+            <span class="result-value" id="landingAngle">-</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <h2>Shot History</h2>
+        <div id="shotHistory" class="shot-history">
+          <p class="empty-state">No shots recorded yet</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="visualization-area">
+      <div id="canvas-container"></div>
+      <div id="status" class="status-bar">Ready</div>
+    </div>
+  </div>
+
+  <script src="physics.js"></script>
+  <script src="simulator.js"></script>
+  <script src="ui.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

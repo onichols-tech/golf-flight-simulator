@@ -1,0 +1,18 @@
+{
+  "name": "golf-flight-simulator",
+  "version": "1.0.0",
+  "description": "Golf ball flight simulator with physics engine and interactive UI",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["golf", "simulator", "physics"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "three": "^r128",
+    "cors": "^2.8.5"
+  }
+}
